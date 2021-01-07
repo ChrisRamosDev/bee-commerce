@@ -34,7 +34,7 @@ const Product = ({ product }) => {
   return (
     <Card>
       <CardMedia
-        image='https://via.placeholder.com/300x500'
+        image={product.media.source}
         title='placeholder'
         className={classes.media}
       />
@@ -43,7 +43,9 @@ const Product = ({ product }) => {
           <Typography variant='h5' gutterBottom>
             {product.name}
           </Typography>
-          <Typography variant='h5'>{product.price}</Typography>
+          <Typography variant='h5'>
+            {product.price.formatted_with_symbol}
+          </Typography>
         </div>
         <Typography
           variant='body2'

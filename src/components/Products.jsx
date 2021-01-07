@@ -1,17 +1,26 @@
 import React from "react";
 import { Grid } from "@material-ui/core";
 import Product from "./Product/Product";
+import { makeStyles } from "@material-ui/core/styles";
 
-const products = [
-  { id: 0, name: "test1", price: "$9.99", description: "Test Item 1" },
-  { id: 1, name: "test2", price: "$8.99", description: "Test Item 2" },
-  { id: 2, name: "test3", price: "$7.99", description: "Test Item 3" },
-];
+const useStyles = makeStyles((theme) => ({
+  toolbar: theme.mixins.toolbar,
+  content: {
+    flexGrow: 1,
+    backgroundColor: theme.palette.background.default,
+    padding: theme.spacing(3),
+  },
+  root: {
+    flexGrow: 1,
+  },
+}));
 
-const Products = () => {
+const Products = ({ products }) => {
+  const classes = useStyles();
+
   return (
-    <main>
-      <div />
+    <main className={classes.content}>
+      <div className={classes.toolbar} />
       <Grid container justify='center' spacing={3}>
         {products.map((product) => (
           <Grid item key={product.id} xs={12} sm={6} md={4} lg={3}>
