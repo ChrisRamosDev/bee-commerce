@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Products from "./components/Products";
+import NavBar from "./components/NavBar/NavBar";
 
 import { commerce } from "./lib/commerce";
 
@@ -18,7 +19,7 @@ const App = () => {
 
   return (
     <>
-      <h1>Debugging</h1>
+      <NavBar />
       <Products products={products} />
     </>
   );
