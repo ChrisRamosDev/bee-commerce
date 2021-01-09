@@ -22,9 +22,9 @@ const App = () => {
     const { cart } = await commerce.cart.add(productId, quantity);
     setCart(cart);
   };
-  // const handleRemoveFromCart = async () => {
-  //   setCart(commerce.cart.remove());
-  // };
+  const handleRemoveFromCart = async () => {
+    setCart(commerce.cart.remove());
+  };
   // const handleUpdateCart = async () => {
   //   setCart(commerce.cart.update());
   // };
@@ -42,8 +42,8 @@ const App = () => {
   return (
     <div>
       <NavBar totalItems={cart.total_items} />
-      <Products products={products} onAddToCart={handleAddToCart} />
-      <Cart />
+      {/* <Products products={products} onAddToCart={handleAddToCart} /> */}
+      <Cart cart={cart} />
     </div>
   );
 };
