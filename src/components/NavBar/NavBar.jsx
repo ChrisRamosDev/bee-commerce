@@ -7,6 +7,8 @@ import {
   Badge,
 } from "@material-ui/core";
 import { ShoppingCart } from "@material-ui/icons";
+
+import { Link, useLocation } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 
 import logo from "../../assets/bee.svg";
@@ -35,22 +37,36 @@ const useStyles = makeStyles((theme) => ({
 
 const NavBar = ({ totalItems }) => {
   const classes = useStyles();
+  const location = useLocation();
 
   return (
     <AppBar postion='fixed' color='inherit' className={classes.appBar}>
       <Toolbar>
-        <Typography variant='h5' color='inherit' className={classes.title}>
+        <Typography
+          component={Link}
+          to='/'
+          variant='h5'
+          color='inherit'
+          className={classes.title}
+        >
           <img src={logo} alt='logo' height='30px' className={classes.image} />
           &nbsp;Commerce
         </Typography>
         <div className={classes.grow} />
-        <div className={classes.button}>
-          <IconButton aria-label='Show Cart' color='inherit'>
-            <Badge badgeContent={totalItems} color='secondary'>
-              <ShoppingCart />
-            </Badge>
-          </IconButton>
-        </div>
+        {location.pathname === "/" && (
+          <div className={classes.button}>
+            <IconButton
+              component={Link}
+              to='/cart'
+              aria-label='Show Cart'
+              color='inherit'
+            >
+              <Badge badgeContent={totalItems} color='secondary'>
+                <ShoppingCart />
+              </Badge>
+            </IconButton>
+          </div>
+        )}
       </Toolbar>
     </AppBar>
   );
